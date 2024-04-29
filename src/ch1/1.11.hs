@@ -1,0 +1,6 @@
+module Ex where
+
+f :: Integer -> Integer
+f n
+  | n < 3 = n
+  | otherwise = f (n - 1) + (2 * f (n - 2)) + (3 * f (n - 3))
