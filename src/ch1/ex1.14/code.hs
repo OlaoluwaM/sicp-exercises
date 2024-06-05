@@ -9,7 +9,7 @@ countingChange 0 _ = 1
 countingChange _ [] = 0
 countingChange amt denominations@(d : ds)
   | amt < 0 = 0
-  | denominations == [1] = 1
+  -- | denominations == [1] = 1
   | otherwise = countingChange amt ds + countingChange (amt - d) denominations
 
 main :: IO ()

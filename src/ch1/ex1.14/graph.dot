@@ -1,80 +1,81 @@
-// Translate to mimic the scheme version
 // We can use subgraphs for having multiple diagrams in a single dot file: https://stackoverflow.com/questions/63869676/multiple-graphs-inside-graphviz-dot-file
 digraph "count-change" {
   node [shape = record;];
   
-  // CC stands for coutingChange
-  "cc 11  5" -> "cc 11 4";
-  "0_1" [label = "0";];
-  "cc 11  5" -> "cc -39 5" -> "0_1";
-  
-  "cc 11 4" -> "cc 11 3";
-  "0_2" [label = "0";];
-  "cc 11 4" -> "cc -14 4" -> "0_2";
-  
-  "cc 11 3" -> "cc 11 2";
-  "cc 11 3" -> "cc 1 3";
-  
-  "cc 1 3" -> "cc 1 2";
-  "0_3" [label = "0";];
-  "cc 1 3" -> "cc -9 3" -> "0_3";
-  
-  "cc 1 2" -> "cc 1 1";
-  "0_4" [label = "0";];
-  "cc 1 2" -> "cc -4 2" -> "0_4";
-  
-  "0_5" [label = "0";];
-  "cc 1 1" -> "cc 1 0" -> "0_5";
-  "1_1" [label = "1";color = red;];
-  "cc 1 1" -> "cc 0 1" -> "1_1";
-  
-  "cc 11 2" -> "cc 11 1";
-  "cc 11 2" -> "cc 6 2";
-  
-  "cc 11 1" -> "cc 11 0" -> "0 ";
-  "cc 11 1" -> "cc 10 1";
-  
-  "cc 6 2" -> "cc 6 1";
-  "cc 6 2" -> "cc 1 2 ";
-  
-  "cc 1 2 " -> "cc 1 1  ";
-  "0_inner" [label = "0";];
-  "cc 1 2 " -> "cc -4 2  " -> "0_inner";
-  
-  "0_inner_inner" [label = "0";];
-  "cc 1 1  " -> "cc 1 0   " -> "0_inner_inner";
-  "1_2" [label = "1";color = red;];
-  "cc 1 1  " -> "cc 0 1   " -> "1_2";
-  
-  "0_6" [label = "0";];
-  "cc 6 1" -> "cc 6 0" -> "0_6";
-  "cc 6 1" -> "cc 5 1";
-  
-  "0_7" [label = "0";];
-  "cc 5 1" -> "cc 5 0" -> "0_7";
-  "cc 5 1" -> "cc 4 1";
-  
-  "0_8" [label = "0";];
-  "cc 4 1" -> "cc 4 0" -> "0_8";
-  "cc 4 1" -> "cc 3 1";
-  
-  "0_9" [label = "0";];
-  "cc 3 1" -> "cc 3 0" -> "0_9";
-  "cc 3 1" -> "cc 2 1";
-  
-  "0_10" [label = "0";];
-  "cc 2 1" -> "cc 2 0" -> "0_10";
-  "cc 2 1" -> "cc 1 1 ";
-  
-  "0_11" [label = "0";];
-  "cc 1 1 " -> "cc 1 0 " -> "0_11";
-  "1_3" [label = "1";color = red;];
-  "cc 1 1 " -> "cc 0 1 " -> "1_3";
-  
-  "0_12" [label = "0";];
-  // Abridged here because the subgraph for "CC 10 [1]" will follow the same
-  // structure as that of "CC 6 [1]". It'll just be longer
-  "cc 10 1" -> "..." -> "cc 1 0  " -> "0_12";
-  "1_4" [label = "1";color = red;];
-  "cc 10 1" -> "... " -> "cc 0 1  " -> "1_4";
+  subgraph "cc 11 5" {
+    // cc stands for coutingChange
+    "cc 11  5" -> "cc 11 4";
+    "0_1" [label = "0";];
+    "cc 11  5" -> "cc -39 5" -> "0_1";
+    
+    "cc 11 4" -> "cc 11 3";
+    "0_2" [label = "0";];
+    "cc 11 4" -> "cc -14 4" -> "0_2";
+    
+    "cc 11 3" -> "cc 11 2";
+    "cc 11 3" -> "cc 1 3";
+    
+    "cc 1 3" -> "cc 1 2";
+    "0_3" [label = "0";];
+    "cc 1 3" -> "cc -9 3" -> "0_3";
+    
+    "cc 1 2" -> "cc 1 1";
+    "0_4" [label = "0";];
+    "cc 1 2" -> "cc -4 2" -> "0_4";
+    
+    "0_5" [label = "0";];
+    "cc 1 1" -> "cc 1 0" -> "0_5";
+    "1_1" [label = "1";color = red;];
+    "cc 1 1" -> "cc 0 1" -> "1_1";
+    
+    "cc 11 2" -> "cc 11 1";
+    "cc 11 2" -> "cc 6 2";
+    
+    "cc 11 1" -> "cc 11 0" -> "0 ";
+    "cc 11 1" -> "cc 10 1";
+    
+    "cc 6 2" -> "cc 6 1";
+    "cc 6 2" -> "cc 1 2 ";
+    
+    "cc 1 2 " -> "cc 1 1  ";
+    "0_inner" [label = "0";];
+    "cc 1 2 " -> "cc -4 2  " -> "0_inner";
+    
+    "0_inner_inner" [label = "0";];
+    "cc 1 1  " -> "cc 1 0   " -> "0_inner_inner";
+    "1_2" [label = "1";color = red;];
+    "cc 1 1  " -> "cc 0 1   " -> "1_2";
+    
+    "0_6" [label = "0";];
+    "cc 6 1" -> "cc 6 0" -> "0_6";
+    "cc 6 1" -> "cc 5 1";
+    
+    "0_7" [label = "0";];
+    "cc 5 1" -> "cc 5 0" -> "0_7";
+    "cc 5 1" -> "cc 4 1";
+    
+    "0_8" [label = "0";];
+    "cc 4 1" -> "cc 4 0" -> "0_8";
+    "cc 4 1" -> "cc 3 1";
+    
+    "0_9" [label = "0";];
+    "cc 3 1" -> "cc 3 0" -> "0_9";
+    "cc 3 1" -> "cc 2 1";
+    
+    "0_10" [label = "0";];
+    "cc 2 1" -> "cc 2 0" -> "0_10";
+    "cc 2 1" -> "cc 1 1 ";
+    
+    "0_11" [label = "0";];
+    "cc 1 1 " -> "cc 1 0 " -> "0_11";
+    "1_3" [label = "1";color = red;];
+    "cc 1 1 " -> "cc 0 1 " -> "1_3";
+    
+    "0_12" [label = "0";];
+    // Abridged here because the subgraph for "cc 10 [1]" will follow the same
+    // structure as that of "cc 6 [1]". It'll just be longer
+    "cc 10 1" -> "..." -> "cc 1 0  " -> "0_12";
+    "1_4" [label = "1";color = red;];
+    "cc 10 1" -> "... " -> "cc 0 1  " -> "1_4";
+  }
 }

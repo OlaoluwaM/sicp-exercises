@@ -81,12 +81,14 @@ digraph countingChange {
 }
 ```
 
-For its space complexity, we know that for tree recursive processes the space complexity is roughly proportional to the maximum depth of the resulting tree created when the process is visualized.
+For its space complexity, we know that for tree recursive processes, the space complexity is roughly proportional to the maximum depth of the tree created by the process.
 
-In this case, we know that the maximum depth would equal the longest chain/subtree, which would occur from deductions on the original amount using the smallest denomination. As to why this is the case, I don't really have a compelling answer, this kinda just makes sense vOv. For instance, deducting pennies, one at a time, from a 100 cents would definitely lead to a longer call graph than deducting either cents or quarters from the same amount.
+In this case, we know that the maximum depth would equal the longest chain/subtree, which would occur from deductions on the original amount using the smallest denomination. As to why this is the case, I don't really have a compelling answer, this kinda just makes sense, though I'm sure there is a way to prove it, I just lack the requisite skills to do so at the moment.
 
-Thinking along these lines, I think we can further generalize this thought to say that the maximum depth in this case would be proportional to the original amount divided by the smallest denomination. If we consider the original amount to be $n$ and the "smallest denomination" to be some constant value (since it won't change or need to be computed during the lifetime of the process) $a$, we could say that the space complexity would be roughly proportional to $n/a$ which simplifies to just $n$ for our purposes.
+Moving on, we can see that, deducting pennies, one at a time, from a 100 cents would definitely create the longest subtree of the entire call graph regardless of the number of other denominations
 
-Thus we can conclude that the space complexity for this algorithm is linear $O(n)$
+Thus, thinking along these lines, I believe we can further generalize this thought to say that the maximum depth in this case would be proportional to the original amount divided by the smallest denomination. If we consider the original amount to be $n$ and the "smallest denomination" to be some constant value (since it won't change or need to be computed during the lifetime of the process) $a$, we could say that the space complexity would be roughly proportional to $n/a$ which simplifies to just $n$ for our purposes.
 
-As for the time complexity more investigation is needed. I find that the best way to investigate would be to graph the `count-change` function with a strategic set of inputs (amounts, and tokens)
+Thusly, we can conclude that the space complexity for this algorithm is linear. It also turns out that using the smallest denomination is also likely to be the worst case thus we can denote the space complexity as $O(n)$
+
+As for the time complexity, I have no idea, I do know that to figure it out one would need to convert this algorithm into a recurrence relation and use either unrolling (repeated substitutions), guess and induction, or recursive graphs to figure out the time complexity.
