@@ -1,3 +1,7 @@
+#lang sicp
+
+; https://replit.com/@olaolum/sicp-workspace#ex1.16.scm
+
 (define (square x) (* x x))
 
 (define (even? n) (= (remainder n 2) 0))
