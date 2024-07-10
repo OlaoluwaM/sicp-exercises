@@ -47,6 +47,8 @@ Show that if we apply such a transformation $T_{pq}$ twice, the effect is the sa
 
 ## Answer
 
+Remember to copy over handwritten notes here
+
 ```scheme
 (define (fib n)
   (fib-iter 1 0 0 1 n))

@@ -18,9 +18,11 @@
                         q
                         (- count 1)))))
 
-(display (fib 10))
+(display (fib 10)) ;; 55
 (newline)
-(display (fib 55))
+
+(display (fib 55)) ;139583862445
 (newline)
-(display (fib 5))
+
+(display (fib 5)) ; 5
 (newline)
