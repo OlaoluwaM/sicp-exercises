@@ -5,3 +5,5 @@
 After installing racket, you'll also need to run `raco pkg install racket-langserver` and `raco pkg install sicp`
 
 This repo also requires the [magic racket vscode extension](https://marketplace.visualstudio.com/items?itemName=evzen-wybitul.magic-racket)
+
+To be able to use the book's version of Scheme in your racket files, you'll need to add `#lang sicp` at the top of your file once you've installed the packages mentioned above
