@@ -1,9 +1,6 @@
 #lang sicp
 
-
-(define (search-for-primes start stop) (search-for-primes-inner start stop))
-
-(define (search-for-primes-inner current stop)
+(define (search-for-primes current stop)
   (cond ((>= current stop) "")
         ((odd? current) (check-prime current stop))
         (else (search-for-primes (+ current 1) stop)))
@@ -30,12 +27,6 @@
   (newline)
   )
 
-(define (report-not-prime n)
-  (display n)
-  (display " is not prime")
-  (newline)
-  )
-
 (define (prime? n) (= n (smallest-divisor n)))
 
 (define (smallest-divisor n) (find-divisor n 2))
@@ -50,24 +41,21 @@
 
 (define (divides? a b) (= (remainder b a) 0))
 
-; Formalize all this into a readme
+; Answer to the first question
+(display (search-for-primes 1000 1020)) ; 1009, 1013, 1019
+(newline)
+(display (search-for-primes 10000 10040)) ; 10007, 10009, 10037
+(newline)
+(display (search-for-primes 100000 100050)) ; 100003, 100019, 100043
+(newline)
+(display (search-for-primes 1000000 1000050)) ; 1000003, 1000033, 1000037
+(newline)
 
-; The first thing we're asked to do is calculate the first smallest prime numbers greater than 1000, 10000, 100000, and 1000000.
 
-; The next thing is the first hypothesis. We know that the procedure used to test primality with an order of growth of Θ(sqrt(n)), but is this really the case? And for every 10x increment in n, do we see a roughly proportional increase in runtime, that is, when we increase the input by a factor of 10, will the runtime also increase by a factor of sqrt(10)?
-
-
-; (display (search-for-primes 1000 1020)) ; 1009, 1013, 1019
-; (newline)
-; (display (search-for-primes 10000 10040)) ; 10007, 10009, 10037
-; (newline)
-; (display (search-for-primes 100000 100050)) ; 100003, 100019, 100043
-; (newline)
-; (display (search-for-primes 1000000 1000050)) ; 1000003, 1000033, 1000037
-; (newline)
-
+; Results to help answer the second and third questions
 ; Since modern computers are hella fast, we might need to use larger inputs to test the time differences
 ; Lower Bound 1 * 10^8
+; We require this lower bound to determine the "expected time" for the first recorded lower bound $1*10^9$
 (display (search-for-primes 100000000 100000020))
 (display (search-for-primes 100000000 100000020))
 (display (search-for-primes 100000000 100000020))

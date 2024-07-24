@@ -31,7 +31,7 @@ Most Lisp implementations include a primitive called `runtime` that returns an i
 ## Solution
 
 1. Code solution can be found in the [code.rkt](code.rkt) file in this directory.
-2. The results are close enough to support the $\Theta{(\sqrt{n})}$ prediction. Inspiration for the table above was gotten from [here](https://www.timwoerner.de/posts/sicp/exercises/1/22/)
+2. The results are close enough to support the $\Theta{(\sqrt{n})}$ prediction. Inspiration for the table above was gotten from [here](https://www.timwoerner.de/posts/sicp/exercises/1/22/). Note that the times listed are based off averages of 5 runs for each lower bound
 
     | Lower Bound        | Expected (μs) | Actual (μs) | Relative Error (%) |
     | ------------------ | ------------- | ----------- | ------------------ |
