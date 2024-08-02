@@ -1,40 +1,13 @@
 #lang sicp
 (#%require (lib "27.ss" "srfi"))
 
-(define (search-for-primes current stop)
-  (cond ((>= current stop) "")
-        ((odd? current) (check-prime current stop))
-        (else (search-for-primes (+ current 1) stop)))
-  )
-
-(define (check-prime current stop)
-  (timed-prime-test current)
-  (search-for-primes (+ current 2) stop)
-  )
 
 (define (timed-prime-test n) (start-prime-test n (runtime)))
 
 (define (start-prime-test n start-time)
-  (if (prime? n)
-      (report-prime n (- (runtime) start-time))
-      ))
-
-(define (prime? n) (= n (smallest-divisor n)))
-
-(define (smallest-divisor n) (find-divisor n 2))
-
-(define (find-divisor n test-divisor)
-  (cond ((> (square test-divisor) n) n)
-        ((divides? test-divisor n) test-divisor)
-        (else (find-divisor n (+ test-divisor 1))))
-  )
-
-(define (timed-prime-test-fermat n) (start-prime-test-fermat n (runtime)))
-
-(define (start-prime-test-fermat n start-time)
   ; The number of *times* we specify will affect the outcome somewhat
   ; So I don't think we can easily compare fast-prime? to prime?
-  (if (fast-prime? n 20)
+  (if (fast-prime? n 5)
       (report-prime n (- (runtime) start-time))
       ))
 
@@ -67,31 +40,54 @@
 
 (display "Using the 'fermat' algorithm")
 (newline)
-(timed-prime-test-fermat 1009)
-(timed-prime-test-fermat 1013)
-(timed-prime-test-fermat 1019)
+(timed-prime-test 1009)
+(timed-prime-test 1013)
+(timed-prime-test 1019)
 (newline)
 
-(timed-prime-test-fermat 10007)
-(timed-prime-test-fermat 10009)
-(timed-prime-test-fermat 10037)
+(timed-prime-test 10007)
+(timed-prime-test 10009)
+(timed-prime-test 10037)
 (newline)
 
-(timed-prime-test-fermat 100003)
-(timed-prime-test-fermat 100019)
-(timed-prime-test-fermat 100043)
+(timed-prime-test 100003)
+(timed-prime-test 100019)
+(timed-prime-test 100043)
 (newline)
 
-(timed-prime-test-fermat 1000003)
-(timed-prime-test-fermat 1000033)
-(timed-prime-test-fermat 1000037)
-(newline)
-(newline)
+(timed-prime-test 1000003)
+(timed-prime-test 1000033)
+(timed-prime-test 1000037)
 (newline)
 
-; Not getting a 2x increase between input of 1*10^6 and 1*10^12 :(
-; 1*10^6
-(timed-prime-test-fermat 1000039)
+; It's easier to observe changes in timing with larger inputs
+(display "Examples for viewing the order of growth")
 (newline)
-; 1*10^12
-(timed-prime-test-fermat 1000000000039)
+(timed-prime-test 1000039)
+(timed-prime-test 1000000000039)
+(timed-prime-test 1000000007)
+(timed-prime-test 1000000009)
+(timed-prime-test 1000000021)
+(newline)
+
+(timed-prime-test 10000000019)
+(timed-prime-test 10000000033)
+(timed-prime-test 10000000061)
+(newline)
+
+(timed-prime-test 100000000003)
+(timed-prime-test 100000000019)
+(timed-prime-test 100000000057)
+(newline)
+
+(timed-prime-test 1000000000039)
+(timed-prime-test 1000000000061)
+(timed-prime-test 1000000000063)
+(newline)
+
+(timed-prime-test (+ (expt 10 9) 9))
+(timed-prime-test (+ (expt 10 18) 9))
+(newline)
+
+(timed-prime-test (+ (expt 10 6) 33))
+(timed-prime-test (+ (expt 10 12) 39))
