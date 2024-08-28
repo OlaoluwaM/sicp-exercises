@@ -24,6 +24,8 @@
 (define dp 5)
 (define golden-ratio-by-fixed-point-rounded (round-to-places golden-ratio-by-fixed-point dp))
 
+; We need to round sicne we're dealing with approximations
+
 (display "fixed-point golden ratio (rounded to 5 d.p): ")
 (display golden-ratio-by-fixed-point-rounded)
 (newline)
