@@ -1,3 +1,5 @@
+#lang sicp
+
 (define (count-change amount) (cc amount 5))
 (define (cc amount kinds-of-coins)
   (cond ((= amount 0) 1)
