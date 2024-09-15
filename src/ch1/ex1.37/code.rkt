@@ -3,15 +3,24 @@
 (#%require string-interpolation)
 
 
-(define (cont-frac n d k) (/ (n 1) (cont-frac-inner n d k 2)))
-
-(define (cont-frac-inner n d k i)
-  (if (= i k) (/ (n k) (d k)) (+ (d (- i 1)) (/ (n i) (cont-frac-inner n d k (+ i 1)))))
+(define (cont-frac n d k)
+  (define (recur i)
+    (if (= i k)
+        (/ (n k) (d k))
+        (/ (n i) (+ (d i) (recur (+ i 1))))
+        )
+    )
+  (recur 1)
   )
 
 ; Iterative solution with help from https://sicp-solutions.net/post/sicp-solution-exercise-1-37/
 (define (cont-frac-iter n d k)
-  (define (iter i result) (if (= i 0) result (iter (- i 1) (/ (n i) (+ result (d i))))))
+  (define (iter i result)
+    (if (= i 0)
+        result
+        (iter (- i 1) (/ (n i) (+ result (d i))))
+        )
+    )
   (iter (- k 1) (/ (n k) (d k)))
   )
 

@@ -19,7 +19,9 @@
 		"scope": "racket",
 		"prefix": "sicp",
 		"body": [
-			"#lang sicp"
+			"#lang sicp",
+			"",
+			"(#%require string-interpolation)"
 		],
 		"description": "Add SICP Manual to racket file"
 	}
